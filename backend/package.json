@@ -1,0 +1,24 @@
+{
+  "name": "moviemate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Parth18Shah/MovieMate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Parth18Shah/MovieMate/issues"
+  },
+  "homepage": "https://github.com/Parth18Shah/MovieMate#readme",
+  "dependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
