@@ -1,3 +1,14 @@
+.bg-black {
+    background-color: rgb(0, 0, 0);
+}
+
+/* give nav-item active gold color */
+.nav-item.active a{
+    /* text color gold */
+    color: #FFD700 !important;
+}
+
+
 .nav-btn:hover{
     text-decoration: none;
     margin: 0px;
