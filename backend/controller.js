@@ -6,8 +6,14 @@ module.exports = {
         console.log(req.query);
         // get searchInput from the query string
         const { query } = req.query;
+        console.log(query);
         
-        
+    },
+    searchShows: (req, res) => {
+        console.log(req.query);
+        // get searchInput from the query string
+        const { query } = req.query;
+        console.log(query);
     },
     getTrendingMovies: (req, res) => {
         console.log(req.query);

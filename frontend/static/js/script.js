@@ -1,18 +1,44 @@
 // call trending movies and shows when the page loads
-document.addEventListener('DOMContentLoaded', async () => {
+// if home page then call trending movies and shows
+// console.log(window.location.pathname);
+if (window.location.pathname == '/frontend/static/index.html' || window.location.pathname == '/') {
     try {
-        const trendingMovies = await axios.get('http://localhost:8080/trendingMovies');
-        const trendingShows = await axios.get('http://localhost:8080/trendingShows');
-        const trendingMoviesData = trendingMovies.data.results;
-        const trendingShowsData = trendingShows.data.results;
-        // const trendingMoviesData = trendingMovies.data.results;
+        document.addEventListener('DOMContentLoaded', async () => {
+                try {
+                    const trendingMovies = await axios.get('http://localhost:8080/trendingMovies');
+                    const trendingShows = await axios.get('http://localhost:8080/trendingShows');
+                    const trendingMoviesData = trendingMovies.data.results;
+                    const trendingShowsData = trendingShows.data.results;
+                    console.log(trendingMoviesData);
+                    console.log(trendingShowsData);
+                    // const trendingMoviesData = trendingMovies.data.results;
+                }   catch (err) {
+                    console.log(err);
+                }
+            });
     }   catch (err) {
         console.log(err);
     }
-});
+}
+
+
+// document.addEventListener('DOMContentLoaded', async () => {
+//     try {
+//         const trendingMovies = await axios.get('http://localhost:8080/trendingMovies');
+//         const trendingShows = await axios.get('http://localhost:8080/trendingShows');
+//         const trendingMoviesData = trendingMovies.data.results;
+//         const trendingShowsData = trendingShows.data.results;
+//         console.log(trendingMoviesData);
+//         console.log(trendingShowsData);
+//         // const trendingMoviesData = trendingMovies.data.results;
+//     }   catch (err) {
+//         console.log(err);
+//     }
+// });
 
 
 const searchForm = document.querySelector('#search-form');
+if (searchForm) {
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const searchInput = document.querySelector('#search-input').value;
@@ -35,4 +61,4 @@ searchForm.addEventListener('submit', async (e) => {
             console.log(err);
         }
     }
-});
+});}
