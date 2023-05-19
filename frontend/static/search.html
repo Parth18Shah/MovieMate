@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieMate - Home</title>
+    <title>MovieMate - Search</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -17,10 +17,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="index.html"><i class="fas fa-home" style="margin-left: 5px; margin-right: 5px;"></i> Home <span class="sr-only">(current)</span></a>
             </li>
-            <li id="search-btn" class="nav-item">
+            <li id="search-btn" class="nav-item active">
               <a class="nav-link" href="search.html"><i class="fas fa-search" style="margin-left: 5px; margin-right: 5px;"></i> Search</a>
             </li>
             <li id="fav-btn" class="nav-item">
@@ -31,15 +31,40 @@
       </nav>
     <div class="container">
         <div class="jumbotron" style="text-align: center;margin-top: 5%;">
-            <!-- Add a tag line to users for this website -->
-            <h1 class="display-4">Welcome to MovieMate</h1>
-            <p class="lead">A website to find your favourite movies and TV shows.</p>
+            <h5 class="text-center">Search Movies or TV Shows</h5>
+            <form id="search-form" class="form-inline justify-content-center" style="margin-top: 20px;">
+                <div class="row">
+                    <div class="col-md-7 m-1">
+                        <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Enter keywords..." aria-label="Search">
+                    </div>
+                    <div class="col-md-2 mx-2 my-1">
+                        <select id="type" class="type-btn form-control">
+                            <option selected value="movie">Movie</option>
+                            <option value="show">TV Show</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button id="search-button" class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+                
+                <!-- <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <div class="form-group col-md-4">
+                    <select id="inputState" class="form-control">
+                      <option selected>Movie</option>
+                      <option>TV Show</option>
+                    </select>
+                  </div>
+                <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
         </div>
+    </div>
+    <div class="container">
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
-<!-- add axios -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </html>

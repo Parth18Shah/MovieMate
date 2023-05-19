@@ -18,7 +18,11 @@
     "url": "https://github.com/Parth18Shah/MovieMate/issues"
   },
   "homepage": "https://github.com/Parth18Shah/MovieMate#readme",
-  "dependencies": {
+  "devDependencies": {
     "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2"
   }
 }

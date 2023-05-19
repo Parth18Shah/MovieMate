@@ -1,0 +1,16 @@
+.nav-btn:hover{
+    text-decoration: none;
+    margin: 0px;
+}
+
+.type-btn,input{
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+}
