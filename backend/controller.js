@@ -15,10 +15,17 @@ module.exports = {
         const { query } = req.query;
         console.log(query);
     },
-    search: async (req, res) => {
+    search: (req, res) => {
+        console.log("search",req);
         console.log(req.query);
         const { query } = req.query;
         console.log(query);
+    },
+    searchForm: (req, res) => {
+        res.render('search');
+    },
+    favorites: (req, res) => {
+        res.render('favorites');
     },
     getTrending: async (req, res) => {
         console.log("getTrendingMovies");

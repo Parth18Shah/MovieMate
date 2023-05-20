@@ -21,10 +21,10 @@
             <li class="nav-item">
               <a class="nav-link" href="/"><i class="fas fa-home" style="margin-left: 5px; margin-right: 5px;"></i> Home <span class="sr-only">(current)</span></a>
             </li>
-            <li id="search-btn" class="nav-item active">
+            <li id="search-btn" class="nav-item">
               <a class="nav-link" href="/searchForm"><i class="fas fa-search" style="margin-left: 5px; margin-right: 5px;"></i> Search</a>
             </li>
-            <li id="fav-btn" class="nav-item">
+            <li id="fav-btn" class="nav-item active">
               <a class="nav-link" href="/favorites"><i class="fas fa-heart" style="margin-left: 5px; margin-right: 5px;"></i> Favourites</a>
             </li>
           </ul>
@@ -32,31 +32,12 @@
       </nav>
     <div class="container">
         <div class="jumbotron" style="text-align: center;margin-top: 5%;">
-            <h5 class="text-center">Search Movies or TV Shows</h5>
-            <form id="search-form" method="GET" action="/search" class="form-inline justify-content-center" style="margin-top: 20px;">
-                <div class="row">
-                    <div class="col-md-7 m-1">
-                        <input id="search-input" name="keywords" class="form-control mr-sm-2" type="text" placeholder="Enter keywords..." aria-label="Search">
-                    </div>
-                    <div class="col-md-2 mx-2 my-1">
-                        <select id="type" name="type" class="type-btn form-control">
-                            <option selected value="movie">Movie</option>
-                            <option value="show">TV Show</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <button id="search-button" class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-                    </div>
-                </div>
-            </form>
+            <h5 class="text-center">Your Favourites</h5>
         </div>
-
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </html>
