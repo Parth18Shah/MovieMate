@@ -4,7 +4,7 @@ var controller = require('./controller');
 
 router.get('/searchMovies', controller.searchMovies);
 router.get('/searchShows', controller.searchShows);
-router.get('/trendingMovies', controller.getTrendingMovies);
-router.get('/trendingShows', controller.getTrendingShows);
+router.get('/', controller.getTrending);
+router.get('/search', controller.search);
 
 module.exports = router;

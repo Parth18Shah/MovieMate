@@ -6,11 +6,12 @@ const path = require('path');
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(router);
-
-const root = path.join(__dirname, '../frontend/index.html');
+app.set('views', path.join(__dirname, 'static'));
+app.set('view engine', 'ejs');
+const root = path.join(__dirname, './static');
 app.use(express.static(root));
 app.get('*', (req, res) => {
-    res.sendFile('index.html', { root });
+    res.sendFile('index.ejs', { root });
 });
 
 const PORT = process.env.PORT || 8080;

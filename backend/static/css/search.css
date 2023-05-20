@@ -1,0 +1,7 @@
+body{
+    /* background: linear-gradient(to bottom, #cccccc, #f0f0f0); */
+    background: linear-gradient(135deg, #4A154B, #000000) !important;
+}
+.bg-black {
+    background-color: transparent;
+}
