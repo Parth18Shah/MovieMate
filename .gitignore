@@ -131,3 +131,5 @@ dist
 
 
 venv
+
+backend/constants.js

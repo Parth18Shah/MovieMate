@@ -83,7 +83,7 @@
                 <% if (trendingShowsData && trendingShowsData.length) { %>
                     <% trendingShowsData.forEach((show) => { %>
                         <div class="card">
-                        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="<%= show.title %>">
+                        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="<%= show.name %>">
                         <div class="card-body">
                             <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
                             <p class="card-text">First Air Date: <%= show.first_air_date %></p>

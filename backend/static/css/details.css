@@ -1,19 +1,22 @@
-body{
-    /* background: linear-gradient(to bottom, #cccccc, #f0f0f0); */
-    background: linear-gradient(135deg, #4A154B, #000000) no-repeat center center fixed !important;
-}
 .bg-black {
-    background-color: transparent;
+    background-color: #4A154B;
 }
 
-/* give nav-item active gold color */
-.nav-item.active a {
-    /* text color gold */
-    color: #FFD700 !important;
+.row{
+    margin: 10% 0px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(152, 152, 152, 0.3);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+}
+
+.poster{
+    width: 100%;
+}
+
+.overview{
+    color: rgb(0, 0, 0);
 }
 
 
-.nav-btn:hover {
-    text-decoration: none;
-    margin: 0px;
-}

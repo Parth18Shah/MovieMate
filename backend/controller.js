@@ -1,6 +1,9 @@
 const { API_KEY } = require('./constants')
 const axios = require('axios');
 const paginate = require('paginate');
+
+var searchData = null;
+let keywords = '';
 module.exports = {
     // searchMovies: (req, res) => {
     //     console.log(req.query);
@@ -16,7 +19,7 @@ module.exports = {
     //     console.log(query);
     // },
     search: (req, res) =>  {
-        var keywords = req.query.keywords.split(" ").join("%20");
+        keywords = req.query.keywords.split(" ").join("%20");
         var type = req.query.type;
         const currentPage = parseInt(req.query.page) || 1;
         // console.log(req.query.page);
@@ -28,25 +31,6 @@ module.exports = {
         }
         axios.get(url)
             .then(response => {
-                // res.header("Access-Control-Allow-Origin", "*");
-                // res.send(response.data.results)
-                // console.log("inside search")
-                // const totalResults = response.data.results.length;
-                // console.log("totalResults", totalResults);
-                // const totalPages = Math.ceil(totalResults / itemsPerPage);
-                // console.log("totalPages", totalPages);
-                // const startIndex = (currentPage - 1) * itemsPerPage;
-                // console.log("startIndex", startIndex);
-                // const endIndex = startIndex + itemsPerPage - 1;
-                // console.log("endIndex", endIndex);
-                // const paginatedResults = response.data.results.slice(startIndex, endIndex);
-                // console.log("paginatedResults", paginatedResults);
-                // const paginator = paginate.createPager({
-                //     page,
-                //     totalResult: response.data.results.length,
-                //     resultsPerPage: itemsPerPage
-                // });
-                // const paginatedResults = response.data.results.slice(paginator.firstResult, paginator.lastResult + 1);
                 console.log("type", type);
                 res.render('search', { searchData: response.data.results, type});
             })
@@ -55,7 +39,7 @@ module.exports = {
             });
     },
     searchForm: (req, res) => {
-        res.render('search', { searchData: null }); 
+        res.render('search', { searchData }); 
     },
     details: (req, res) => {
         var id = req.params.id;
@@ -71,7 +55,7 @@ module.exports = {
                 // res.header("Access-Control-Allow-Origin", "*");
                 console.log("response.data", response.data);
                 // res.send(response.data)
-                res.render('details', { detailsData: response.data, type });
+                res.render('details', { detailsData: response.data, type, keywords });
             })
             .catch(err => {
                 console.log("hi",err);
