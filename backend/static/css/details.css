@@ -2,7 +2,7 @@
     background-color: #4A154B;
 }
 
-.row{
+.row {
     margin: 10% 0px;
     padding: 10px;
     border-radius: 10px;
@@ -11,12 +11,18 @@
     padding: 20px;
 }
 
-.poster{
+.poster {
     width: 100%;
 }
 
-.overview{
+.overview {
     color: rgb(0, 0, 0);
 }
 
-
+.card.no-hover{
+    width: 500px !important;
+    height: 300px !important; 
+    overflow-y: auto !important;
+    padding: 10px !important;
+    background: rgba(152, 152, 152, 0.3) !important;
+}

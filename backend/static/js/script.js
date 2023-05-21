@@ -1,167 +1,124 @@
-// call trending movies and shows when the page loads
-// if home page then call trending movies and shows
-console.log(window.location.pathname);
-// if (window.location.pathname == '/backend/static/index.html' || window.location.pathname == '/') {
-//     try {
-//         console.log('hello');
-//         document.addEventListener('DOMContentLoaded', async () => {
-//                 try {
-//                     console.log('hello1');
-                    // const trendingMovies = await axios.get('http://localhost:8080/trendingMovies');
-                    // await axios.get('http://localhost:8080/trendingMovies');
-                    // await axios.get('http://localhost:8080/trendingShows');
-                    // const trendingMoviesData = trendingMovies.data;
-                    // const trendingShowsData = trendingShows.data;
-                    // console.log(trendingMoviesData);
-                    // console.log(trendingShowsData);
-                    // renderMovieCards(trendingMoviesData);
-                    // const carouselContainer = document.getElementById('trending-movies-carousel');
+// // call trending movies and shows when the page loads
+// // if home page then call trending movies and shows
+// // console.log(window.location.pathname, window.location.pathname.split('/'));
+// // if (window.location.pathname.split('/')[1] === 'details') {
+// //     console.log("details page");
+// // }
+// if (window.location.pathname.split('/')[1] === 'details') {
+//     type = window.location.pathname.split('/')[2];
+//     id = window.location.pathname.split('/')[3];
+//     function checkFavorite (type, id) {
+//         // Get the existing favorites from local storage (if any)
+//         let favorites = JSON.parse(localStorage.getItem('favorites')) || { movies: [], shows: [] };
 
-                    // trendingMoviesData.forEach((movie) => {
-                    // const movieCard = createMovieCard(movie);
-                    // carouselContainer.appendChild(movieCard);
-                    // });
-
-                    // const prevBtn = document.getElementById('prev-btn');
-                    // const nextBtn = document.getElementById('next-btn');
-
-                    // prevBtn.addEventListener('click', () => {
-                    // carouselContainer.scrollBy({ left: -200, behavior: 'smooth' });
-                    // });
-
-                    // nextBtn.addEventListener('click', () => {
-                    // carouselContainer.scrollBy({ left: 200, behavior: 'smooth' });
-                    // });
-                    // const carouselWrapper = document.getElementById('trending-movies-carousel');
-                    // const swiperWrapper = document.createElement('div');
-                    // swiperWrapper.classList.add('swiper-wrapper');
-
-                    // trendingMoviesData.forEach((movie) => {
-                    // const movieCard = createMovieCard(movie);
-                    // swiperWrapper.appendChild(movieCard);
-                    // });
-
-                    // carouselWrapper.appendChild(swiperWrapper);
-
-                    // // Initialize the Swiper carousel
-                    // new Swiper('.swiper-container', {
-                    // slidesPerView: 'auto',
-                    // spaceBetween: 16,
-                    // pagination: {
-                    //     el: '.swiper-pagination',
-                    //     clickable: true,
-                    // },
-                    // });
-//                 }   catch (err) {
-//                     console.log(err);
-//                 }
-//             });
-//     }   catch (err) {
-//         console.log(err);
-//     }
-// }
-
-// function renderMovieCards(trendingMoviesData){
-//     const carouselContainer = document.getElementById('trending-movies-carousel');
-//     trendingMoviesData.forEach((movie) => {
-
-// }
-// function createMovieCard(movie) {
-//     const { title, poster, releaseDate } = movie;
-  
-//     const card = document.createElement('div');
-//     card.classList.add('swiper-slide', 'card');
-  
-//     const img = document.createElement('img');
-//     img.classList.add('card-img-top');
-//     img.src = poster;
-//     img.alt = title;
-  
-//     const cardBody = document.createElement('div');
-//     cardBody.classList.add('card-body');
-  
-//     const titleElement = document.createElement('h5');
-//     titleElement.classList.add('card-title');
-//     titleElement.textContent = title;
-  
-//     const releaseDateElement = document.createElement('p');
-//     releaseDateElement.classList.add('card-text');
-//     releaseDateElement.textContent = `Release Date: ${releaseDate}`;
-  
-//     cardBody.appendChild(titleElement);
-//     cardBody.appendChild(releaseDateElement);
-//     card.appendChild(img);
-//     card.appendChild(cardBody);
-  
-//     return card;
-//   }
-
-// document.addEventListener('DOMContentLoaded', async () => {
-//     try {
-//         const trendingMovies = await axios.get('http://localhost:8080/trendingMovies');
-//         const trendingShows = await axios.get('http://localhost:8080/trendingShows');
-//         const trendingMoviesData = trendingMovies.data.results;
-//         const trendingShowsData = trendingShows.data.results;
-//         console.log(trendingMoviesData);
-//         console.log(trendingShowsData);
-//         // const trendingMoviesData = trendingMovies.data.results;
-//     }   catch (err) {
-//         console.log(err);
-//     }
-// });
-
-// function createMovieCard(movie) {
-//     const { title, poster, releaseDate } = movie;
-  
-//     const card = document.createElement('div');
-//     card.classList.add('card');
-  
-//     const img = document.createElement('img');
-//     img.classList.add('card-img-top');
-//     img.src = poster;
-//     img.alt = title;
-  
-//     const cardBody = document.createElement('div');
-//     cardBody.classList.add('card-body');
-  
-//     const titleElement = document.createElement('h5');
-//     titleElement.classList.add('card-title');
-//     titleElement.textContent = title;
-  
-//     const releaseDateElement = document.createElement('p');
-//     releaseDateElement.classList.add('card-text');
-//     releaseDateElement.textContent = `Release Date: ${releaseDate}`;
-  
-//     cardBody.appendChild(titleElement);
-//     cardBody.appendChild(releaseDateElement);
-//     card.appendChild(img);
-//     card.appendChild(cardBody);
-  
-//     return card;
-// }
-
-// const searchForm = document.querySelector('#search-form');
-// if (searchForm) {
-// searchForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-//     const searchInput = document.querySelector('#search-input').value;
-//     const type = document.querySelector('#type').value;
-//     if(type == 'movie') {
-//         try {
-//             const searchResults = await axios.get('http://localhost:8080/searchMovies', { params: { query: searchInput } });
-//             const searchResultsData = searchResults.data.results;
-//             console.log(searchResultsData);
-//         }   catch (err) {
-//             console.log(err);
+//         // Check if the movie/show is present in the respective section (movies or shows) based on the type
+//         if (type === 'movie') {
+//             return favorites.movies.some(movie => movie.id === id);
+//         } else if (type === 'show') {
+//             return favorites.shows.some(show => show.id === id);
 //         }
 //     }
-//     else if(type == 'show') {
-//         try {
-//             const searchResults = await axios.get('http://localhost:8080/searchShows', { params: { query: searchInput } });
-//             const searchResultsData = searchResults.data.results;
-//             console.log(searchResultsData);
-//         }   catch (err) {
-//             console.log(err);
+//     function addToFavorites (type, id) {
+//         // Create an object or array with the necessary details
+//         let favorite = {};
+//         if (type === 'movie') {
+//             favorite = {
+//                 title: '<%= detailsData.title %>',
+//                 id: '<%= detailsData.id %>',
+//                 poster: '<%= detailsData.poster_path %>',
+//                 type: type,
+//             };
+//         } else if (type === 'show') {
+//             favorite = {
+//                 title: '<%= detailsData.name %>',
+//                 id: '<%= detailsData.id %>',
+//                 poster: '<%= detailsData.poster_path %>',
+//                 type: type,
+//             };
 //         }
+    
+//         // Get the existing favorites from local storage (if any)
+//         let favorites = JSON.parse(localStorage.getItem('favorites')) || { movies: [], shows: [] };
+    
+//         // Push the favorite object to the respective section (movies or shows) based on the type
+//         if (favorite.type === 'movie') {
+//           favorites.movies.push(favorite);
+//         } else if (favorite.type === 'show') {
+//           favorites.shows.push(favorite);
+//         }
+    
+//         // Save the updated favorites back to local storage
+//         localStorage.setItem('favorites', JSON.stringify(favorites));
 //     }
-// });}
+//     // const id = window.location.pathname.split('/')[3];
+//     // console.log("id", id);
+//     // Call the checkFavorite function and store the result in a variable
+//     const isFavorite = checkFavorite(type, id);
+//     console.log("isFavorite", isFavorite);
+//     // Update the button based on the result
+//     if (isFavorite) {
+//     document.getElementById('remove-from-favorites').style.display = 'inline-block';
+//     document.getElementById('add-to-favorites').style.display = 'none';
+//     } else {
+//     document.getElementById('remove-from-favorites').style.display = 'none';
+//     document.getElementById('add-to-favorites').style.display = 'inline-block';
+//     }
+
+//     document.getElementById('add-to-favorites').addEventListener('click', function() {
+//         // Create an object or array with the necessary details
+//         var type = '<%= type %>';
+//         let favorite = {};
+//         if (type === 'movie') {
+//             favorite = {
+//                 title: '<%= detailsData.title %>',
+//                 id: '<%= detailsData.id %>',
+//                 poster: '<%= detailsData.poster_path %>',
+//                 type: type,
+//             };
+//         } else if (type === 'show') {
+//             favorite = {
+//                 title: '<%= detailsData.name %>',
+//                 id: '<%= detailsData.id %>',
+//                 poster: '<%= detailsData.poster_path %>',
+//                 type: type,
+//             };
+//         }
+    
+//         // Get the existing favorites from local storage (if any)
+//         let favorites = JSON.parse(localStorage.getItem('favorites')) || { movies: [], shows: [] };
+    
+//         // Push the favorite object to the respective section (movies or shows) based on the type
+//         if (favorite.type === 'movie') {
+//           favorites.movies.push(favorite);
+//         } else if (favorite.type === 'show') {
+//           favorites.shows.push(favorite);
+//         }
+    
+//         // Update the favorites in the local storage
+//         localStorage.setItem('favorites', JSON.stringify(favorites));
+//     });
+    
+//     document.getElementById('remove-from-favorites').addEventListener('click', function() {
+//         // Get the existing favorites from local storage (if any)
+//         let favorites = JSON.parse(localStorage.getItem('favorites')) || { movies: [], shows: [] };
+    
+//         // Get the id of the movie/show to be removed from the URL
+//         let id = window.location.pathname.split('/')[2];
+    
+//         // Remove the movie/show from the respective section (movies or shows) based on the type
+//         if (type === 'movie') {
+//             favorites.movies = favorites.movies.filter(movie => movie.id !== id);
+//         } else if (type === 'show') {
+//             favorites.shows = favorites.shows.filter(show => show.id !== id);
+//         }
+    
+//         // Update the favorites in the local storage
+//         localStorage.setItem('favorites', JSON.stringify(favorites));
+//     });
+// }
+
+
+
+
+
+

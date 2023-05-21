@@ -46,12 +46,13 @@ module.exports = {
         var type = req.params.type;
         if (type == "movie") {
             try {
-                const [response1, response2] = await Promise.all([
+                const [response1, response2, response3] = await Promise.all([
                     axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`),
-                    axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`)
+                    axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`),
+                    axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`)
                 ]);
-
-                    res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, type, keywords });
+                    console.log("response3.data", response3.data.results.length);
+                    res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, reviewsData: response3.data.results, type, keywords });
             }catch (err) {
                 console.log(err);
             }
@@ -60,11 +61,12 @@ module.exports = {
         else {
             try {
                 // var url = `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`
-                const [response1, response2] = await Promise.all([
+                const [response1, response2, response3] = await Promise.all([
                     axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`),
-                    axios.get(`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`)
+                    axios.get(`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`),
+                    axios.get(`https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`)
                 ]);
-                res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, type, keywords });
+                res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, reviewsData: response3.data.results, type, keywords });
             } catch (err) {
                 console.log(err);
             }
@@ -87,9 +89,14 @@ module.exports = {
     getTrending: async (req, res) => {
         console.log("getTrendingMovies");
         try{
-            const [response1, response2] = await Promise.all([
-                axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`),
-                axios.get(`https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}`)
+            const [response1, response2, response3, response4, response5, response6 ,response7] = await Promise.all([
+                axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`), // trending movies
+                axios.get(`https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}`), // trending shows
+                axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`), // upcoming movies
+                axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`), // popular movies
+                axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=1`), // popular shows
+                axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`), // top rated movies
+                axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`), // top rated shows
             ]);
             console.log("response1.data", response1.data.results[0])
             console.log("response2.data", response2.data.results[0])
