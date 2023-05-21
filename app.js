@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 const root = path.join(__dirname, './static');
 app.use(express.static(root));
 app.get('*', (req, res) => {
-    res.sendFile('index', { root });
+    res.sendFile('index.ejs', { root });
 });
 
 const PORT = process.env.PORT || 8080;
