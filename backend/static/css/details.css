@@ -2,15 +2,6 @@
     background-color: #4A154B;
 }
 
-.row {
-    margin: 10% 0px;
-    padding: 10px;
-    border-radius: 10px;
-    background: rgba(152, 152, 152, 0.3);
-    backdrop-filter: blur(20px);
-    padding: 20px;
-}
-
 .poster {
     width: 100%;
 }

@@ -51,7 +51,7 @@ module.exports = {
                     axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`),
                     axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`)
                 ]);
-                    console.log("response3.data", response3.data.results.length);
+                    // console.log("response3.data", response3.data.results.length);
                     res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, reviewsData: response3.data.results, type, keywords });
             }catch (err) {
                 console.log(err);
@@ -87,7 +87,6 @@ module.exports = {
         res.render('favorites');
     },
     getTrending: async (req, res) => {
-        console.log("getTrendingMovies");
         try{
             const [response1, response2, response3, response4, response5, response6 ,response7] = await Promise.all([
                 axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`), // trending movies
@@ -98,9 +97,9 @@ module.exports = {
                 axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`), // top rated movies
                 axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`), // top rated shows
             ]);
-            console.log("response1.data", response1.data.results[0])
-            console.log("response2.data", response2.data.results[0])
-            res.render('index', { trendingMoviesData: response1.data.results, trendingShowsData: response2.data.results });
+            // console.log("response1.data", response1.data.results[0])
+            // console.log("response2.data", response2.data.results[0])
+            res.render('index', { trendingMoviesData: response1.data.results, trendingShowsData: response2.data.results, upcomingMoviesData: response3.data.results, popularMoviesData: response4.data.results, popularShowsData: response5.data.results, topRatedMoviesData: response6.data.results, topRatedShowsData: response7.data.results });
         } catch (err) {
             console.log(err);
         }

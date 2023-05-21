@@ -20,12 +20,43 @@ body{
 
 /* for trending movies and shows */
 
+
+.row {
+    margin: 50px 0px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(152, 152, 152, 0.3);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+}
+
+.row h3 {
+    color: aliceblue;
+}
+
 .scroll-container {
     display: flex;
     overflow-x: auto;
     padding: 10px;
     width: 100%;
 }
+
+/* .scroll-container::-webkit-scrollbar {
+    width: 8px !important; 
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1  !important;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #888 !important;
+    border-radius: 4px !important;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555 !important;
+} */
 
 .card-container {
     display: flex;

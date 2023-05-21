@@ -35,69 +35,156 @@
       </nav>
     <div class="container">
         <div class="jumbotron" style="text-align: center;margin-top: 5%;">
-            <!-- Add a tag line to users for this website -->
             <h1 class="display-4">Welcome to MovieMate</h1>
             <p class="lead">A website to find your favourite movies and TV shows.</p>
         </div>
-        <!-- <div class="swiper-container">
-          <div class="swiper-wrapper" id="trending-movies-carousel"></div>
-          <div class="swiper-pagination"></div>
-        </div> -->
-        <!-- <div class="scroll-container">
-          <div id="trending-movies-carousel" class="card-container"></div>
-          <button id="prev-btn" class="carousel-btn prev-btn">&lt;</button>
-          <button id="next-btn" class="carousel-btn next-btn">&gt;</button>
-        </div> -->
-        <!-- create a card layout horizontally scrollable and use ejs to iterate through the trendingMovieData -->
-        <!-- <div class="card-container" id="trending-movies-carousel"> 
-          <div class="card">
-            <img src="images/venom.jpg" alt="Venom" style="width: 100%;">
-            <div class="card-body">
-              <h5 class="card-title">Venom</h5>
-              <p class="card-text">Venom is a 2018 American superhero film based on the Marvel Comics character of the same name, produced by Columbia Pictures in association with Marvel and Tencent Pictures.</p>
-              <a href="#" class="btn btn-primary">Add to Favourites</a>
-            </div>
-          </div></div> -->
-          <div class="scroll-container">
-            <div id="trending-movies-carousel" class="card-container">
-                <% if (trendingMoviesData && trendingMoviesData.length) { %>
-                    <% trendingMoviesData.forEach((movie) => { %>
-                        <div class="card">
-                        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %>">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
-                            <p class="card-text">Release Date: <%= movie.release_date %></p>
-                            <p class="card-text">Rating: <%= movie.vote_average %></p>
-                        </div>
-                        </div>
-                    <% }); %>
-                <% } else { %> 
-                    <h1>No Trending Movies</h1>
-                <% } %>
-            </div>
-            <!-- <button id="prev-btn" class="carousel-btn prev-btn">&lt;</button>
-            <button id="next-btn" class="carousel-btn next-btn">&gt;</button> -->
+        <% if (trendingMoviesData && trendingMoviesData.length) { %>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>Trending Movies</h3> 
+              </div>
+              <div class="scroll-container">
+                <div id="trending-movies-carousel" class="card-container">
+                        <% trendingMoviesData.forEach((movie) => { %>
+                            <div class="card">
+                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
+                                <p class="card-text">Release Date: <%= movie.release_date %></p>
+                                <p class="card-text">Rating: <%= movie.vote_average %></p>
+                            </div>
+                            </div>
+                        <% }); %>
+                </div>
+              </div>
           </div>
-          <div class="scroll-container">
-            <div id="trending-shows-carousel" class="card-container">
-                <% if (trendingShowsData && trendingShowsData.length) { %>
-                    <% trendingShowsData.forEach((show) => { %>
-                        <div class="card">
-                        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="<%= show.name %>">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
-                            <p class="card-text">First Air Date: <%= show.first_air_date %></p>
-                            <p class="card-text">Rating: <%= show.vote_average %></p>
-                        </div>
-                        </div>
-                    <% }); %>
-                <% } else { %> 
-                    <h1>No Trending shows</h1>
-                <% } %>
-            </div>
-            <!-- <button id="prev-btn" class="carousel-btn prev-btn">&lt;</button>
-            <button id="next-btn" class="carousel-btn next-btn">&gt;</button> -->
+        <% } %>
+        <% if (upcomingMoviesData && upcomingMoviesData.length) { %>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>Upcoming Movies</h3> 
+              </div>
+              <div class="scroll-container">
+                <div id="trending-movies-carousel" class="card-container">
+                        <% upcomingMoviesData.forEach((movie) => { %>
+                            <div class="card">
+                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
+                                <p class="card-text">Release Date: <%= movie.release_date %></p>
+                                <p class="card-text">Rating: <%= movie.vote_average %></p>
+                            </div>
+                            </div>
+                        <% }); %>
+                </div>
+              </div>
           </div>
+        <% } %>
+        <% if (popularMoviesData && popularMoviesData.length) { %>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>Popular Movies</h3> 
+              </div>
+              <div class="scroll-container">
+                <div id="trending-movies-carousel" class="card-container">
+                        <% popularMoviesData.forEach((movie) => { %>
+                            <div class="card">
+                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
+                                <p class="card-text">Release Date: <%= movie.release_date %></p>
+                                <p class="card-text">Rating: <%= movie.vote_average %></p>
+                            </div>
+                            </div>
+                        <% }); %>
+                </div>
+              </div>
+          </div>
+        <% } %>
+        <% if (topRatedMoviesData && topRatedMoviesData.length) { %>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>Top Rated Movies</h3> 
+              </div>
+              <div class="scroll-container">
+                <div id="trending-movies-carousel" class="card-container">
+                        <% topRatedMoviesData.forEach((movie) => { %>
+                            <div class="card">
+                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
+                                <p class="card-text">Release Date: <%= movie.release_date %></p>
+                                <p class="card-text">Rating: <%= movie.vote_average %></p>
+                            </div>
+                            </div>
+                        <% }); %>
+                </div>
+              </div>
+          </div>
+        <% } %>
+        <% if (trendingShowsData && trendingShowsData.length) { %>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>Trending Shows</h3> 
+              </div>
+              <div class="scroll-container">
+                <div id="trending-shows-carousel" class="card-container">
+                        <% trendingShowsData.forEach((show) => { %>
+                            <div class="card">
+                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="<%= show.name %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
+                                <p class="card-text">First Air Date: <%= show.first_air_date %></p>
+                                <p class="card-text">Rating: <%= show.vote_average %></p>
+                            </div>
+                            </div>
+                        <% }); %>
+                </div>
+              </div>
+          </div>
+        <% } %>
+        <% if (popularShowsData && popularShowsData.length) { %>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>Popular Shows</h3> 
+              </div>
+              <div class="scroll-container">
+                <div id="trending-shows-carousel" class="card-container">
+                        <% popularShowsData.forEach((show) => { %>
+                            <div class="card">
+                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="<%= show.name %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
+                                <p class="card-text">First Air Date: <%= show.first_air_date %></p>
+                                <p class="card-text">Rating: <%= show.vote_average %></p>
+                            </div>
+                            </div>
+                        <% }); %>
+                </div>
+              </div>
+          </div>
+        <% } %>
+        <% if (topRatedShowsData && topRatedShowsData.length) { %>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>Top Rated Shows</h3> 
+              </div>
+              <div class="scroll-container">
+                <div id="trending-shows-carousel" class="card-container">
+                        <% topRatedShowsData.forEach((show) => { %>
+                            <div class="card">
+                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="<%= show.name %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
+                                <p class="card-text">First Air Date: <%= show.first_air_date %></p>
+                                <p class="card-text">Rating: <%= show.vote_average %></p>
+                            </div>
+                            </div>
+                        <% }); %>
+                </div>
+              </div>
+          </div>
+        <% } %>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
