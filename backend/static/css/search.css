@@ -1,7 +1,27 @@
-body{
+body {
     /* background: linear-gradient(to bottom, #cccccc, #f0f0f0); */
     background: linear-gradient(135deg, #4A154B, #000000) !important;
 }
+
 .bg-black {
     background-color: transparent;
+}
+
+.card-row {
+    display: flex;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 25%;
+    /* Each card takes up 25% width to display 4 cards per row */
+}
+
+/* Hide extra rows when pagination is displayed */
+.card-container:not(:last-child) {
+    display: none;
 }

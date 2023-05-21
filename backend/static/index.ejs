@@ -65,7 +65,7 @@
                         <div class="card">
                         <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %>">
                         <div class="card-body">
-                            <h5 class="card-title"><%= movie.title %></h5>
+                            <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
                             <p class="card-text">Release Date: <%= movie.release_date %></p>
                             <p class="card-text">Rating: <%= movie.vote_average %></p>
                         </div>
@@ -85,7 +85,7 @@
                         <div class="card">
                         <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="<%= show.title %>">
                         <div class="card-body">
-                            <h5 class="card-title"><%= show.name %></h5>
+                            <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
                             <p class="card-text">First Air Date: <%= show.first_air_date %></p>
                             <p class="card-text">Rating: <%= show.vote_average %></p>
                         </div>

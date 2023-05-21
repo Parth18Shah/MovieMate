@@ -1,62 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieMate - Search</title>
-    <link rel="icon" href="images/moviemate-logo.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-      <a class="navbar-brand" href="/"><img src="images/moviemate.png" alt="MovieMate" style="width: auto; height: 30px;"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/"><i class="fas fa-home" style="margin-left: 5px; margin-right: 5px;"></i> Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li id="search-btn" class="nav-item active">
-              <a class="nav-link" href="/searchForm"><i class="fas fa-search" style="margin-left: 5px; margin-right: 5px;"></i> Search</a>
-            </li>
-            <li id="fav-btn" class="nav-item">
-              <a class="nav-link" href="/favorites"><i class="fas fa-heart" style="margin-left: 5px; margin-right: 5px;"></i> Favourites</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    <div class="container">
-        <div class="jumbotron" style="text-align: center;margin-top: 5%;">
-            <h5 class="text-center">Search Movies or TV Shows</h5>
-            <form id="search-form" method="GET" action="/search" class="form-inline justify-content-center" style="margin-top: 20px;">
-                <div class="row">
-                    <div class="col-md-7 m-1">
-                        <input id="search-input" name="keywords" class="form-control mr-sm-2" type="text" placeholder="Enter keywords..." aria-label="Search">
-                    </div>
-                    <div class="col-md-2 mx-2 my-1">
-                        <select id="type" name="type" class="type-btn form-control">
-                            <option selected value="movie">Movie</option>
-                            <option value="show">TV Show</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <button id="search-button" class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-                    </div>
-                </div>
-            </form>
-        </div>
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieMate - Search</title>
+  <link rel="icon" href="images/moviemate-logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <a class="navbar-brand" href="/"><img src="images/moviemate.png" alt="MovieMate"
+        style="width: auto; height: 30px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/"><i class="fas fa-home" style="margin-left: 5px; margin-right: 5px;"></i> Home
+            </a>
+        </li>
+        <li id="search-btn" class="nav-item active">
+          <a class="nav-link" href="/searchForm"><i class="fas fa-search"
+              style="margin-left: 5px; margin-right: 5px;"></i> Search</a>
+        </li>
+        <li id="fav-btn" class="nav-item">
+          <a class="nav-link" href="/favorites"><i class="fas fa-heart"
+              style="margin-left: 5px; margin-right: 5px;"></i> Favourites</a>
+        </li>
+      </ul>
     </div>
+  </nav>
+  <div class="container">
+    <div class="jumbotron" style="text-align: center;margin-top: 5%;">
+      <h5 class="text-center">Search Movies or TV Shows</h5>
+      <form id="search-form" method="GET" action="/search" class="form-inline justify-content-center"
+        style="margin-top: 20px;">
+        <div class="row">
+          <div class="col-md-7 m-1">
+            <input id="search-input" name="keywords" class="form-control mr-sm-2" type="text"
+              placeholder="Enter keywords..." aria-label="Search">
+          </div>
+          <div class="col-md-2 mx-2 my-1">
+            <select id="type" name="type" class="type-btn form-control">
+              <option selected value="movie">Movie</option>
+              <option value="show">TV Show</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button id="search-button" class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <% if (searchData) { %>
+      <% if (searchData.length===0) { %>
+        <div class="alert alert-danger" role="alert">
+          No results found!
+        </div>
+        <% } else { %>
+          <div class="row">
+            <h3>Search Results</h3>
+          </div>
+          <div class="row">
+            <% searchData.forEach((result, index)=> { %>
+              <% if (index % 4===0) { %>
+          </div>
+          <div class="row" style="margin-bottom: 20px;">
+            <% } %>
+              <div class="col-md-3">
+                <div class="card">
+                  <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= result.poster_path %>" alt=" No image found ">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <a href="/details/<%= type %>/<%= result.id %>" style="text-decoration: none;">
+                        <% if (type === 'movie') { %>
+                          <%= result.title %>
+                        <% } else { %>
+                          <%= result.name %>
+                        <% } %>
+                      </a>
+                      
+                    </h5>
+                    
+                    <p class="card-text">
+                      <% if (type === 'movie') { %>
+                        Release Date: <%= result.release_date %>
+                      <% } else { %>
+                        First Air Date: <%= result.first_air_date %>
+                      <% } %>
+                      <br>Rating: <%= result.vote_average %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <% }); %>
+          </div>
+
+          <% } %>
+            <% } %>
+  </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
+
 </html>

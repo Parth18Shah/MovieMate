@@ -1,28 +1,81 @@
 const { API_KEY } = require('./constants')
 const axios = require('axios');
-
+const paginate = require('paginate');
 module.exports = {
-    searchMovies: (req, res) => {
-        console.log(req.query);
-        // get searchInput from the query string
-        const { query } = req.query;
-        console.log(query);
+    // searchMovies: (req, res) => {
+    //     console.log(req.query);
+    //     // get searchInput from the query string
+    //     const { query } = req.query;
+    //     console.log(query);
         
-    },
-    searchShows: (req, res) => {
-        console.log(req.query);
-        // get searchInput from the query string
-        const { query } = req.query;
-        console.log(query);
-    },
-    search: (req, res) => {
-        console.log("search",req);
-        console.log(req.query);
-        const { query } = req.query;
-        console.log(query);
+    // },
+    // searchShows: (req, res) => {
+    //     console.log(req.query);
+    //     // get searchInput from the query string
+    //     const { query } = req.query;
+    //     console.log(query);
+    // },
+    search: (req, res) =>  {
+        var keywords = req.query.keywords.split(" ").join("%20");
+        var type = req.query.type;
+        const currentPage = parseInt(req.query.page) || 1;
+        // console.log(req.query.page);
+        const itemsPerPage = 12;
+        if (type == "movie") {
+            var url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${keywords}&include_adult=true&language=en-US&page=1`
+        } else {
+            var url = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${keywords}&include_adult=true&language=en-US&page=1`
+        }
+        axios.get(url)
+            .then(response => {
+                // res.header("Access-Control-Allow-Origin", "*");
+                // res.send(response.data.results)
+                // console.log("inside search")
+                // const totalResults = response.data.results.length;
+                // console.log("totalResults", totalResults);
+                // const totalPages = Math.ceil(totalResults / itemsPerPage);
+                // console.log("totalPages", totalPages);
+                // const startIndex = (currentPage - 1) * itemsPerPage;
+                // console.log("startIndex", startIndex);
+                // const endIndex = startIndex + itemsPerPage - 1;
+                // console.log("endIndex", endIndex);
+                // const paginatedResults = response.data.results.slice(startIndex, endIndex);
+                // console.log("paginatedResults", paginatedResults);
+                // const paginator = paginate.createPager({
+                //     page,
+                //     totalResult: response.data.results.length,
+                //     resultsPerPage: itemsPerPage
+                // });
+                // const paginatedResults = response.data.results.slice(paginator.firstResult, paginator.lastResult + 1);
+                console.log("type", type);
+                res.render('search', { searchData: response.data.results, type});
+            })
+            .catch(err => {
+                console.log(err);
+            });
     },
     searchForm: (req, res) => {
-        res.render('search');
+        res.render('search', { searchData: null }); 
+    },
+    details: (req, res) => {
+        var id = req.params.id;
+        var type = req.params.type;
+        if (type == "movie") {
+            var url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+        }
+        else {
+            var url = `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`
+        }
+        axios.get(url)
+            .then(response => {
+                // res.header("Access-Control-Allow-Origin", "*");
+                console.log("response.data", response.data);
+                // res.send(response.data)
+                res.render('details', { detailsData: response.data, type });
+            })
+            .catch(err => {
+                console.log("hi",err);
+            });
     },
     favorites: (req, res) => {
         res.render('favorites');
