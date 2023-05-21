@@ -41,25 +41,45 @@ module.exports = {
     searchForm: (req, res) => {
         res.render('search', { searchData }); 
     },
-    details: (req, res) => {
+    details: async (req, res) => {
         var id = req.params.id;
         var type = req.params.type;
         if (type == "movie") {
-            var url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+            try {
+                const [response1, response2] = await Promise.all([
+                    axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`),
+                    axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`)
+                ]);
+
+                    res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, type, keywords });
+            }catch (err) {
+                console.log(err);
+            }
+            // var url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
         }
         else {
-            var url = `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`
+            try {
+                // var url = `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`
+                const [response1, response2] = await Promise.all([
+                    axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`),
+                    axios.get(`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`)
+                ]);
+                res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, type, keywords });
+            } catch (err) {
+                console.log(err);
+            }
+
         }
-        axios.get(url)
-            .then(response => {
-                // res.header("Access-Control-Allow-Origin", "*");
-                console.log("response.data", response.data);
-                // res.send(response.data)
-                res.render('details', { detailsData: response.data, type, keywords });
-            })
-            .catch(err => {
-                console.log("hi",err);
-            });
+        // axios.get(url)
+        //     .then(response => {
+        //         // res.header("Access-Control-Allow-Origin", "*");
+        //         console.log("response.data", response.data);
+        //         // res.send(response.data)
+        //         res.render('details', { detailsData: response.data, type, keywords });
+        //     })
+        //     .catch(err => {
+        //         console.log("hi",err);
+        //     });
     },
     favorites: (req, res) => {
         res.render('favorites');
