@@ -44,7 +44,11 @@
                 <div id="trending-movies-carousel" class="card-container">
                         <% trendingMoviesData.forEach((movie) => { %>
                             <div class="card">
-                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %>">
+                            <% if (movie.poster_path && movie.poster_path !== '404' && movie.poster_path !== '500') { %>
+                              <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="Movie Poster">
+                            <% } else { %>
+                                <img class="card-img-top" src="/images/movie-placeholder.jpg" alt="Placeholder Image">
+                            <% } %>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
                                 <p class="card-text">Release Date: <%= movie.release_date %></p>
@@ -65,7 +69,11 @@
                 <div id="trending-movies-carousel" class="card-container">
                         <% upcomingMoviesData.forEach((movie) => { %>
                             <div class="card">
-                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %>">
+                              <% if (movie.poster_path && movie.poster_path !== '404' && movie.poster_path !== '500') { %>
+                                <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="Movie Poster">
+                              <% } else { %>
+                                  <img class="card-img-top" src="/images/movie-placeholder.jpg" alt="Placeholder Image">
+                              <% } %>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
                                 <p class="card-text">Release Date: <%= movie.release_date %></p>
@@ -86,7 +94,11 @@
                 <div id="trending-movies-carousel" class="card-container">
                         <% popularMoviesData.forEach((movie) => { %>
                             <div class="card">
-                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %>">
+                              <% if (movie.poster_path && movie.poster_path !== '404' && movie.poster_path !== '500') { %>
+                                <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="Movie Poster">
+                              <% } else { %>
+                                  <img class="card-img-top" src="/images/movie-placeholder.jpg" alt="Placeholder Image">
+                              <% } %>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
                                 <p class="card-text">Release Date: <%= movie.release_date %></p>
@@ -107,7 +119,11 @@
                 <div id="trending-movies-carousel" class="card-container">
                         <% topRatedMoviesData.forEach((movie) => { %>
                             <div class="card">
-                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="<%= movie.title %>">
+                              <% if (movie.poster_path && movie.poster_path !== '404' && movie.poster_path !== '500') { %>
+                                <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" alt="Movie Poster">
+                              <% } else { %>
+                                  <img class="card-img-top" src="/images/movie-placeholder.jpg" alt="Placeholder Image">
+                              <% } %>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
                                 <p class="card-text">Release Date: <%= movie.release_date %></p>
@@ -128,7 +144,11 @@
                 <div id="trending-shows-carousel" class="card-container">
                         <% trendingShowsData.forEach((show) => { %>
                             <div class="card">
-                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="<%= show.name %>">
+                            <% if (show.poster_path && show.poster_path !== '404' && show.poster_path !== '500') { %>
+                              <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="Show Poster">
+                            <% } else { %>
+                                <img class="card-img-top" src="/images/show-placeholder.jpg" alt="Placeholder Image">
+                            <% } %>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
                                 <p class="card-text">First Air Date: <%= show.first_air_date %></p>
@@ -149,7 +169,11 @@
                 <div id="trending-shows-carousel" class="card-container">
                         <% popularShowsData.forEach((show) => { %>
                             <div class="card">
-                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="<%= show.name %>">
+                              <% if (show.poster_path && show.poster_path !== '404' && show.poster_path !== '500') { %>
+                                <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="Show Poster">
+                              <% } else { %>
+                                  <img class="card-img-top" src="/images/show-placeholder.jpg" alt="Placeholder Image">
+                              <% } %>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
                                 <p class="card-text">First Air Date: <%= show.first_air_date %></p>
@@ -170,7 +194,11 @@
                 <div id="trending-shows-carousel" class="card-container">
                         <% topRatedShowsData.forEach((show) => { %>
                             <div class="card">
-                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="<%= show.name %>">
+                              <% if (show.poster_path && show.poster_path !== '404' && show.poster_path !== '500') { %>
+                                <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= show.poster_path %>" alt="Show Poster">
+                              <% } else { %>
+                                  <img class="card-img-top" src="/images/show-placeholder.jpg" alt="Placeholder Image">
+                              <% } %>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
                                 <p class="card-text">First Air Date: <%= show.first_air_date %></p>

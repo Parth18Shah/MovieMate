@@ -61,6 +61,15 @@
                     <div class="col-md-4">
                         <img src="https://image.tmdb.org/t/p/w500<%= detailsData.poster_path %>" alt="Movie Poster"
                             class="poster">
+                            <% if (detailsData.poster_path && detailsData.poster_path !== '404' && detailsData.poster_path !== '500') { %>
+                                <img class="poster" src="https://image.tmdb.org/t/p/w500<%= detailsData.poster_path %>" alt="Movie Poster">
+                              <% } else { %>
+                                <% if (type === 'movie') { %>
+                                    <img class="poster" src="/images/movie-placeholder.jpg" alt="Placeholder Image">
+                                  <% } else { %>
+                                    <img class="poster" src="/images/show-placeholder.jpg" alt="Placeholder Image">
+                                  <% } %>
+                              <% } %>
                     </div>
                     <div class="col-md-8">
                             <h2 style="text-align: center;">
@@ -188,7 +197,12 @@
                                     
                                         <% detailsData.seasons.forEach((season) => { %>
                                             <div class="card">
-                                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= season.poster_path %>" alt="Poster link broken" style="text-align: center; color: white;">
+                                            <!-- <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= season.poster_path %>" alt="Poster link broken" style="text-align: center; color: white;"> -->
+                                            <% if (season.poster_path && season.poster_path !== '404' && season.poster_path !== '500') { %>
+                                                <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= season.poster_path %>" alt="Show Season <%= season.season_number %> Poster">
+                                              <% } else { %>
+                                                  <img class="card-img-top" src="/images/show-placeholder.jpg" alt="Placeholder Image">
+                                              <% } %>
                                             <div class="card-body">
                                                 <h5 class="card-title"><%= season.name %></h5>
                                                 <p class="card-text">Air Date: <%= season.air_date %></p>

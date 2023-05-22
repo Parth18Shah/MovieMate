@@ -34,7 +34,7 @@
     </div>
   </nav>
   <div class="container">
-    <div class="jumbotron" style="text-align: center;margin-top: 5%;">
+    <!-- <div class="jumbotron" style="text-align: center;margin-top: 5%;">
       <h5 class="text-center">Search Movies or TV Shows</h5>
       <form id="search-form" method="GET" action="/search" class="form-inline justify-content-center"
         style="margin-top: 20px;">
@@ -56,7 +56,46 @@
           </div>
         </div>
       </form>
+    </div> -->
+    <div class="row justify-content-center">
+    <div class="search col-xs-6 col-xs-offset-3">
+      <h5 class="text-center">Search Movies or TV Shows</h5>
+      <form id="search-form" method="GET" action="/search" class="form-inline justify-content-center" style="margin-top: 20px;">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row">
+              <label for="keywords">Enter keywords:</label>
+            </div>
+            <div class="row">
+              <input id="search-input" name="keywords" class="form-control mr-sm-2" type="text" placeholder="Enter keywords..." aria-label="Search" autocomplete="off">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <label for="type">Type:</label>
+            </div>
+            <div class="row">
+              <select id="type" name="type" class="type-btn form-control">
+              <option selected value="movie">Movie</option>
+              <option value="show">TV Show</option>
+            </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <button id="search-button" class="btn btn-success my-2 my-sm-0" type="submit" onclick="showSpinner()">Search</button>
+          </div>
+        </div>
+      </form>
     </div>
+    </div>
+    <div id="spinner" style="display: none; text-align: center; margin-bottom: 10px;">
+      <div class="spinner-border text-primary" style="color: antiquewhite !important; width: 5rem !important; height: 5rem !important;" role="status">
+        <!-- <span class="visually-hidden">Loading...</span> -->
+      </div>
+    </div>
+    <div id="search-results">
     <% if (searchData) { %>
       <% if (searchData.length===0) { %>
         <div class="alert alert-danger" role="alert">
@@ -67,11 +106,20 @@
             <% searchData.forEach((result, index)=> { %>
               <% if (index % 4===0) { %>
           </div>
-          <div class="row" style="margin-bottom: 20px;">
+          <div class="row" style="margin-bottom: 15px;">
             <% } %>
-              <div class="col-md-3">
+              <div class="col-md-3 d-flex justify-content-center">
                 <div class="card">
-                  <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= result.poster_path %>" alt=" No image found ">
+                  <% if (result.poster_path && result.poster_path !== '404' && result.poster_path !== '500') { %>
+                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= result.poster_path %>" alt="Movie Poster">
+                  <% } else { %>
+                    <% if (type === 'movie') { %>
+                      <img class="card-img-top" src="/images/movie-placeholder.jpg" alt="Placeholder Image">
+                    <% } else { %>
+                      <img class="card-img-top" src="/images/show-placeholder.jpg" alt="Placeholder Image">
+                    <% } %>
+                  <% } %>
+                  <!-- <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= result.poster_path %>" alt=" No image found "> -->
                   <div class="card-body">
                     <h5 class="card-title">
                       <a href="/details/<%= type %>/<%= result.id %>" style="text-decoration: none;">
@@ -99,10 +147,21 @@
 
           <% } %>
             <% } %>
+      </div>
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-
+<script>
+  function showSpinner() {
+    document.getElementById("spinner").style.display = "block";
+    document.getElementById("search-results").style.display = "none";
+    
+    setTimeout(function() {
+      document.getElementById("spinner").style.display = "none";
+      document.getElementById("search-results").style.display = "block"; // Display the search results after a delay
+    }, 5000);
+  }
+</script>
 </html>
