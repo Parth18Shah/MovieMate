@@ -47,7 +47,7 @@ npm run dev
 ```
 
 Create an account on [TMDB](https://www.themoviedb.org/) and generate an API key. 
-Create a constants.js file in the root directory and add the following line:
+Create a constants.js file in the root directory and add the following lines:
 ```html
 API_KEY = "your_api_key"
 
