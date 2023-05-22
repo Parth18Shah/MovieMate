@@ -137,7 +137,7 @@
                       <% } else { %>
                         First Air Date: <%= result.first_air_date %>
                       <% } %>
-                      <br>Rating: <%= result.vote_average %>
+                      <br>Rating: <%= Math.round(result.vote_average) %>
                     </p>
                   </div>
                 </div>

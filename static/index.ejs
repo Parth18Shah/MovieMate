@@ -52,7 +52,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
                                 <p class="card-text">Release Date: <%= movie.release_date %></p>
-                                <p class="card-text">Rating: <%= movie.vote_average %></p>
+                                <p class="card-text">Rating: <%= Math.round(movie.vote_average) %></p>
                             </div>
                             </div>
                         <% }); %>
@@ -77,7 +77,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
                                 <p class="card-text">Release Date: <%= movie.release_date %></p>
-                                <p class="card-text">Rating: <%= movie.vote_average %></p>
+                                <p class="card-text">Rating: <%= Math.round(movie.vote_average) %></p>
                             </div>
                             </div>
                         <% }); %>
@@ -102,7 +102,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
                                 <p class="card-text">Release Date: <%= movie.release_date %></p>
-                                <p class="card-text">Rating: <%= movie.vote_average %></p>
+                                <p class="card-text">Rating: <%= Math.round(movie.vote_average) %></p>
                             </div>
                             </div>
                         <% }); %>
@@ -127,7 +127,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/movie/<%= movie.id %>" style="text-decoration: none;"><%= movie.title %></a></h5>
                                 <p class="card-text">Release Date: <%= movie.release_date %></p>
-                                <p class="card-text">Rating: <%= movie.vote_average %></p>
+                                <p class="card-text">Rating: <%= Math.round(movie.vote_average) %></p>
                             </div>
                             </div>
                         <% }); %>
@@ -152,7 +152,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
                                 <p class="card-text">First Air Date: <%= show.first_air_date %></p>
-                                <p class="card-text">Rating: <%= show.vote_average %></p>
+                                <p class="card-text">Rating: <%= Math.round(show.vote_average) %></p>
                             </div>
                             </div>
                         <% }); %>
@@ -177,7 +177,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
                                 <p class="card-text">First Air Date: <%= show.first_air_date %></p>
-                                <p class="card-text">Rating: <%= show.vote_average %></p>
+                                <p class="card-text">Rating: <%= Math.round(show.vote_average) %></p>
                             </div>
                             </div>
                         <% }); %>
@@ -202,7 +202,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/details/show/<%= show.id %>" style="text-decoration: none;"><%= show.name %></a></h5>
                                 <p class="card-text">First Air Date: <%= show.first_air_date %></p>
-                                <p class="card-text">Rating: <%= show.vote_average %></p>
+                                <p class="card-text">Rating: <%= Math.round(show.vote_average) %></p>
                             </div>
                             </div>
                         <% }); %>

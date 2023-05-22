@@ -40,7 +40,7 @@
                                     style="margin-left: 5px; margin-right: 5px;"></i> Home
                             </a>
                         </li>
-                        <li id="search-btn" class="nav-item active">
+                        <li id="search-btn" class="nav-item">
                             <a class="nav-link" href="/searchForm"><i class="fas fa-search"
                                     style="margin-left: 5px; margin-right: 5px;"></i> Search</a>
                         </li>
@@ -59,8 +59,8 @@
                         
                     </div>
                     <div class="col-md-4">
-                        <img src="https://image.tmdb.org/t/p/w500<%= detailsData.poster_path %>" alt="Movie Poster"
-                            class="poster">
+                        <!-- <img src="https://image.tmdb.org/t/p/w500<%= detailsData.poster_path %>" alt="Movie Poster"
+                            class="poster"> -->
                             <% if (detailsData.poster_path && detailsData.poster_path !== '404' && detailsData.poster_path !== '500') { %>
                                 <img class="poster" src="https://image.tmdb.org/t/p/w500<%= detailsData.poster_path %>" alt="Movie Poster">
                               <% } else { %>
@@ -119,7 +119,7 @@
                                 <% } %>
                                 <% if (detailsData.vote_average) { %>
                                     <li class="list-group-item"><strong>Rated:</strong>
-                                        <%= detailsData.vote_average %>
+                                        <%= Math.round(detailsData.vote_average) %>
                                     </li>
                                 <% } %>
                                 <% if (detailsData.production_companies) { %>
@@ -232,7 +232,16 @@
                                 <div id="trending-shows-carousel" class="card-container">
                                     <% recommendationData.forEach((recommendation) => { %>
                                         <div class="card">
-                                        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= recommendation.poster_path %>" alt="Poster link broken" style="text-align: center; color: white;">
+                                        <!-- <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= recommendation.poster_path %>" alt="Poster link broken" style="text-align: center; color: white;"> -->
+                                        <% if (recommendation.poster_path && recommendation.poster_path !== '404' && recommendation.poster_path !== '500') { %>
+                                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= recommendation.poster_path %>" alt="Poster Image">
+                                          <% } else { %>
+                                            <% if (type === 'movie') { %>
+                                              <img class="card-img-top" src="/images/movie-placeholder.jpg" alt="Placeholder Image">
+                                            <% } else { %>
+                                              <img class="card-img-top" src="/images/show-placeholder.jpg" alt="Placeholder Image">
+                                            <% } %>
+                                          <% } %>
                                         <div class="card-body">
                                             <h5 class="card-title">
                                                 <a href="/details/<%= type %>/<%= recommendation.id %>" style="text-decoration: none;">
@@ -243,7 +252,7 @@
                                                   <% } %>
                                                 </a> 
                                               </h5>
-                                            <p class="card-text">Rating: <%= recommendation.vote_count %></p>
+                                            <p class="card-text">Rating: <%= Math.round(recommendation.vote_average) %></p>
                                         </div>
                                         </div>
                                     <% }); %>
