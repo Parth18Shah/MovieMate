@@ -1,4 +1,4 @@
-const { formatReviewsData } = require('../utils');
+const { formatReviewsData } = require('./utils');
 
 describe('formatReviewsData', () => {
     test('formats reviews data correctly', () => {
