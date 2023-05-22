@@ -46,6 +46,17 @@ npm cd MovieMate
 npm run dev
 ```
 
+Create an account on [TMDB](https://www.themoviedb.org/) and generate an API key. 
+Create a constants.js file in the root directory and add the following line:
+```html
+API_KEY = "your_api_key"
+
+
+module.exports = { 
+    API_KEY
+}
+```
+
 Open your web browser and visit http://localhost:8080 to access the application (you can also avoid this process by using the hosted link provided above).
 
 ---
