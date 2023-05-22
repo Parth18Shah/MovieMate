@@ -11,7 +11,7 @@
 }
 
 .card.no-hover{
-    width: 25% !important;
+    width: 17rem !important;
     height: 30rem !important; 
     overflow-y: auto !important;
     padding: 10px !important;
@@ -21,4 +21,6 @@
 .row {
     background: rgba(152, 152, 152, 0.5) !important;
     backdrop-filter: blur(20px);
+    margin-left: auto !important;
+    margin-right: auto !important;
 }

@@ -102,7 +102,7 @@
           No results found!
         </div>
         <% } else { %>
-          <div class="row">
+          <!-- <div class="row">
             <% searchData.forEach((result, index)=> { %>
               <% if (index % 4===0) { %>
           </div>
@@ -119,7 +119,6 @@
                       <img class="card-img-top" src="/images/show-placeholder.jpg" alt="Placeholder Image">
                     <% } %>
                   <% } %>
-                  <!-- <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= result.poster_path %>" alt=" No image found "> -->
                   <div class="card-body">
                     <h5 class="card-title">
                       <a href="/details/<%= type %>/<%= result.id %>" style="text-decoration: none;">
@@ -143,8 +142,48 @@
                 </div>
               </div>
               <% }); %>
+          </div> -->
+          <div class="row" style="margin: 0;">
+            <% searchData.forEach((result, index) => { %>
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card" style="margin: 10px auto;">
+                  <% if (result.poster_path && result.poster_path !== '404' && result.poster_path !== '500') { %>
+                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w500<%= result.poster_path %>" alt="Movie Poster">
+                  <% } else { %>
+                    <% if (type === 'movie') { %>
+                      <img class="card-img-top" src="/images/movie-placeholder.jpg" alt="Placeholder Image">
+                    <% } else { %>
+                      <img class="card-img-top" src="/images/show-placeholder.jpg" alt="Placeholder Image">
+                    <% } %>
+                  <% } %>
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <a href="/details/<%= type %>/<%= result.id %>" style="text-decoration: none;">
+                        <% if (type === 'movie') { %>
+                          <%= result.title %>
+                        <% } else { %>
+                          <%= result.name %>
+                        <% } %>
+                      </a> 
+                    </h5>
+                    <p class="card-text">
+                      <% if (type === 'movie') { %>
+                        Release Date: <%= result.release_date %>
+                      <% } else { %>
+                        First Air Date: <%= result.first_air_date %>
+                      <% } %>
+                      <br>Rating: <%= Math.round(result.vote_average) %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <% if ((index + 1) % 4 === 0) { %>
+                </div>
+                <div class="row" style="margin-bottom: 5px;">
+              <% } %>
+            <% }); %>
           </div>
-
+          
           <% } %>
             <% } %>
       </div>
