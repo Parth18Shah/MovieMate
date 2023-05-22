@@ -1,6 +1,5 @@
-<p align="center"><a href="https://moviemate-387420.wl.r.appspot.com/"><img alt="movieinfo app" src="https://github.com/Parth18Shah/MovieMate/blob/main/static/images/moviemate.png" width="150vw"/></a></p>
-<h1 align="center">MovieMate</h1>
-
+<p align="center"><a href="https://moviemate-387420.wl.r.appspot.com/"><img alt="movieinfo app" src="https://github.com/Parth18Shah/MovieMate/blob/main/static/images/moviemate.png" width="300vw"/></a></p>
+<br>
 <p align="center">
 	<a href="https://moviemate-387420.wl.r.appspot.com/">View Demo</a> |
 	<a href="https://github.com/Parth18Shah/MovieMate/issues/new">Report Bug</a> |
@@ -44,6 +43,12 @@ npm cd MovieMate
 
 ```html
 npm run dev
+```
+
+#### For testing
+Note: Yoou can add more test cases in app.test.js file
+```html
+npm run test
 ```
 
 Create an account on [TMDB](https://www.themoviedb.org/) and generate an API key. 
