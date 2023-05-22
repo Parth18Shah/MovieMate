@@ -1,5 +1,5 @@
 .bg-black {
-    background-color: #4A154B;
+    background-color: transparent;
 }
 
 .poster {
@@ -7,13 +7,18 @@
 }
 
 .overview {
-    color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0) !important;
 }
 
 .card.no-hover{
-    width: 500px !important;
-    height: 300px !important; 
+    width: 25% !important;
+    height: 30rem !important; 
     overflow-y: auto !important;
     padding: 10px !important;
     background: rgba(152, 152, 152, 0.3) !important;
+}
+
+.row {
+    background: rgba(152, 152, 152, 0.5) !important;
+    backdrop-filter: blur(20px);
 }

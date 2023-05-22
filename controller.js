@@ -1,7 +1,8 @@
 const { API_KEY } = require('./constants')
 const axios = require('axios');
 const paginate = require('paginate');
-
+const { format } = require('path');
+const { formatReviewsData } = require('./utils');
 var searchData = null;
 let keywords = '';
 module.exports = {
@@ -51,8 +52,10 @@ module.exports = {
                     axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`),
                     axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`)
                 ]);
+                    const formattedReviewsData = formatReviewsData(response3.data.results);
+                    console.log("formattedReviewsData", formattedReviewsData[0]);
                     // console.log("response3.data", response3.data.results.length);
-                    res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, reviewsData: response3.data.results, type, keywords });
+                    res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, reviewsData: formattedReviewsData, type, keywords });
             }catch (err) {
                 console.log(err);
             }
@@ -66,7 +69,8 @@ module.exports = {
                     axios.get(`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`),
                     axios.get(`https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`)
                 ]);
-                res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, reviewsData: response3.data.results, type, keywords });
+                const formattedReviewsData = formatReviewsData(response3.data.results);
+                res.render('details', { detailsData: response1.data, recommendationData: response2.data.results, reviewsData: formattedReviewsData, type, keywords });
             } catch (err) {
                 console.log(err);
             }
