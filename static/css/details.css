@@ -18,6 +18,24 @@
     background: rgba(152, 152, 152, 0.3) !important;
 }
 
+.card.no-hover::-webkit-scrollbar {
+    width: 5px !important;
+    height: 8px !important;
+  }
+  
+  .card.no-hover::-webkit-scrollbar-track {
+    background-color: #000000 !important;
+  }
+  
+  .card.no-hover::-webkit-scrollbar-thumb {
+    background-color: #888 !important;
+    border-radius: 2px !important;
+  }
+  
+  .card.no-hover::-webkit-scrollbar-thumb:hover {
+    background-color: #555 !important;
+  }
+
 .row {
     background: rgba(152, 152, 152, 0.5) !important;
     backdrop-filter: blur(20px);
