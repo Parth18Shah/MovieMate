@@ -67,7 +67,7 @@ Open your web browser and visit http://localhost:8080 to access the application 
 ---
 ### Tech stack
 
-`Frontend` : Vanilla JavaScript, HTML, CSS, Bootstrap,   <br>
+`Frontend` : Vanilla JavaScript, HTML, CSS, Bootstrap   <br>
 `Backend` : Node.js, Express.js, EJS, Jest  <br>
 `API` : [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) <br>
 `Deployment Platform`: Google Cloud Platform (App Engine)
